@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><script>window.SOMI_STANDALONE=true;</script>
+<title>Englisch: Sonstige Mitarbeit</title>
+<style>
+/* Layout: Überblick oben (Stand je Schuljahr), darunter Erläuterung der 5 Dimensionen,
+   dann die Formate-Matrix. Jede Dimension hat eine eigene Farbe, beide Pole teilen sie. */
+:root{
+  --bg:#F4F6FB; --surface:#FFFFFF; --ink:#1A2033; --muted:#58617A; --line:#DCE1EE; --soft:#EBEEF7;
+  --on:#FFFFFF;
+  --a:#2D5FD0; --b:#C0357F; --c:#B07000; --d:#0E8A85; --e:#7048D0;
+  --head:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'Hanken Grotesk','Segoe UI',system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10131C; --surface:#181D2A; --ink:#E7EAF4; --muted:#9BA4BC; --line:#2A3146; --soft:#212840;
+  --on:#10131C;
+  --a:#82A5FF; --b:#F283BB; --c:#F0B43C; --d:#4FD1C5; --e:#B89CFF; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#10131C; --surface:#181D2A; --ink:#E7EAF4; --muted:#9BA4BC; --line:#2A3146; --soft:#212840;
+  --on:#10131C;
+  --a:#82A5FF; --b:#F283BB; --c:#F0B43C; --d:#4FD1C5; --e:#B89CFF; color-scheme:dark;}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
+  padding-inline:max(16px,3vw);padding-block:28px 56px}
+.wrap{max-width:1180px;margin-inline:auto;display:flex;flex-direction:column;gap:40px}
+h1,h2,h3{font-family:var(--head);margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(28px,5vw,42px);line-height:1.08}
+h2{font-size:clamp(21px,3vw,26px)}
+h3{font-size:17px}
+p{margin:0}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--a);outline-offset:2px;border-radius:6px}
+
+/* dimension tokens */
+.dA{--x:var(--a)}.dB{--x:var(--b)}.dC{--x:var(--c)}.dD{--x:var(--d)}.dE{--x:var(--e)}
+.dA,.dB,.dC,.dD,.dE{
+  --x-soft:color-mix(in srgb,var(--x) 17%,var(--surface));
+  --x-wash:color-mix(in srgb,var(--x) 6%,var(--surface));
+  --x-ink:color-mix(in srgb,var(--x) 68%,var(--ink));
+}
+
+/* hero */
+.hero{display:grid;gap:18px}
+.hero p.lead{max-width:62ch;font-size:17px;color:var(--muted)}
+.steps{display:flex;flex-wrap:wrap;gap:10px}
+.steps li{list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:9px 14px;font-size:14px;display:flex;gap:9px;align-items:center}
+.steps ol{display:contents}
+.steps b{font-family:var(--head);display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--bg);font-size:13px}
+.legendrow{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--muted);align-items:center}
+.legendrow span{display:inline-flex;gap:7px;align-items:center}
+
+/* ticks */
+.tick{display:inline-grid;place-items:center;width:24px;height:24px;background:var(--x);color:var(--on)}
+.tick.p1{border-radius:50%}.tick.p2{border-radius:7px}
+.tick svg{width:14px;height:14px}
+.tick.cond{background:transparent;border:2px dotted var(--x);color:var(--x)}
+.tick.cond svg{display:none}
+
+/* section head */
+.sechead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:6px 24px;margin-bottom:16px}
+.sechead p{max-width:60ch}
+
+/* coverage */
+.years{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px}
+.year{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.yhead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.yhead h3{font-size:26px}
+.score{font-size:14px;color:var(--muted);text-align:right}
+.score b{color:var(--ink);font-family:var(--head);font-size:22px}
+.cgroups{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.cg{display:flex;flex-direction:column;gap:6px;min-width:0}
+.cg .lab{font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--x-ink)}
+.pill{font-family:inherit;text-align:left;width:100%;cursor:pointer;display:flex;align-items:center;gap:8px;border-radius:10px;padding:7px 10px;font-size:14px;font-weight:600;border:2px solid transparent;min-height:38px}
+.pill .st{font-size:11px;font-weight:600;margin-left:auto;opacity:.9;white-space:nowrap}
+.pill .chev{width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin:-3px 0 0 2px;flex:none;opacity:.7;transition:transform .15s}
+.pill.sel .chev{transform:rotate(-135deg);margin-top:3px}
+.pill.sel{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--x)}
+.pdet{background:var(--x-soft);color:var(--x-ink);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.pdet .pdt{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.cands{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.cands li{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cands .cn{flex:1 1 200px;font-size:13px;font-weight:600}
+.cuv{flex:1 1 180px;min-width:0;font:inherit;font-size:13px;padding:7px 10px;border-radius:8px;border:1px solid var(--x);background:var(--surface);color:var(--ink)}
+.cands .savebtn{margin:0;background:var(--x);color:var(--on)}
+.pdet .sbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.sbtn{font:inherit;font-size:13px;font-weight:600;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.flist{margin:0}.pdet .muted{color:inherit;opacity:.75}
+.pill.done{background:var(--x);color:var(--on)}
+.pill.plan{background:var(--x-soft);color:var(--x-ink);border-color:var(--x);border-style:dashed}
+.pill.fix{background:var(--x-soft);color:var(--x-ink)}
+.pill.open{background:transparent;color:var(--muted);border-color:var(--line);border-style:dashed;font-weight:500}
+.next{background:var(--soft);border-radius:12px;padding:12px 14px;font-size:14px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.next button{background:var(--ink);color:var(--bg);border:0;border-radius:8px;padding:7px 12px;font-weight:600;cursor:pointer;font-size:13px}
+.next.good{background:color-mix(in srgb,var(--d) 14%,var(--surface))}
+
+/* dimension explainer */
+.dims{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto auto;gap:14px}
+.dims .dA{grid-column:1;grid-row:1}
+.dims .dB{grid-column:1;grid-row:2}
+.dims .dC{grid-column:1 / -1;grid-row:3}
+.dims .dD{grid-column:2;grid-row:1}
+.dims .dE{grid-column:2;grid-row:2}
+@media (max-width:760px){.dims{grid-template-columns:minmax(0,1fr);grid-template-rows:none}.dims .dim{grid-column:auto!important;grid-row:auto!important}}
+.dim{background:var(--x-wash);border:1px solid color-mix(in srgb,var(--x) 28%,var(--line));border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.dimtop{display:flex;gap:12px;align-items:center}
+.dimtop .letter{font-family:var(--head);font-weight:700;font-size:22px;width:40px;height:40px;border-radius:10px;background:var(--x);color:var(--on);display:grid;place-items:center;flex:none}
+.dimtop h3{font-size:17px;line-height:1.2}
+.dimtop span{font-size:13px;color:var(--x-ink);font-weight:600}
+.poles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:520px){.poles{grid-template-columns:1fr}}
+.pole{background:var(--surface);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.pole .pk{display:flex;gap:8px;align-items:center;font-weight:700;color:var(--x-ink)}
+.pole .pk .tick{width:22px;height:22px}
+.pole p{font-size:13.5px;overflow-wrap:anywhere;hyphens:auto}
+.pole .bsp{font-size:12.5px;color:var(--muted)}
+.dimnote{font-size:12.5px;color:var(--muted)}
+.noteline{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;margin-top:14px}
+
+/* matrix */
+.scroll{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:1010px}
+th,td{padding:8px 6px;text-align:center;border-bottom:1px solid var(--line);vertical-align:middle}
+thead th{font-weight:600;font-size:12.5px;background:var(--surface)}
+.dimh{background:var(--x-soft)!important;color:var(--x-ink);font-family:var(--head);font-size:14px!important;border-bottom:0!important}
+.dimh small{display:block;font-family:var(--body);font-weight:500;font-size:11.5px;opacity:.9}
+.poleh{background:var(--x-soft)!important;color:var(--x-ink);line-height:1.15;width:64px;min-width:64px}
+.poleh b{display:block;font-size:14px}
+.poleh span{font-weight:500;font-size:11px}
+.sticky{position:sticky;left:0;z-index:2;background:var(--surface);text-align:left;width:250px;min-width:250px;max-width:250px;padding-left:14px;
+  box-shadow:1px 0 0 var(--line)}
+thead .sticky{z-index:3}
+tr.tier th{background:var(--soft);text-align:left;font-family:var(--head);font-size:15px;padding:10px 14px}
+tr.tier th span{position:sticky;left:14px;display:inline-block}
+tr.tier small{font-family:var(--body);font-weight:500;color:var(--muted);margin-left:10px;font-size:12.5px}
+td.pc{background:var(--x-wash)}
+td.pc.on{background:var(--x-soft)}
+.fname{display:flex;flex-direction:column;gap:2px}
+.fname button{all:unset;cursor:pointer;font-weight:700;font-size:14.5px;line-height:1.25;display:flex;gap:6px;align-items:flex-start}
+.fname button:focus-visible{outline:3px solid var(--a);border-radius:6px}
+.fname .chev{flex:none;margin-top:3px;transition:transform .15s}
+.fname button[aria-expanded="true"] .chev{transform:rotate(90deg)}
+.fname .kurz{font-size:12.5px;color:var(--muted);padding-left:20px}
+.fname .part{font-size:12px;font-weight:600;color:var(--muted);padding-left:20px}
+.meter{display:inline-flex;gap:3px}
+.meter i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.meter i.f{background:var(--ink)}
+.stbtn{display:block;width:84px;margin:3px auto;border-radius:9px;padding:5px 4px;font-size:12px;font-weight:600;cursor:pointer;border:2px dashed var(--line);background:transparent;color:var(--muted)}
+.stbtn.s1{border-color:var(--ink);background:var(--soft);color:var(--ink)}
+.stbtn.s2{border:2px solid var(--ink);background:var(--ink);color:var(--bg)}
+.stbtn:hover{border-color:var(--ink)}
+tr.det td{background:var(--bg);text-align:left;padding:0;border-bottom:1px solid var(--line)}
+.detgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;padding:16px 16px 18px 16px;position:sticky;left:0;max-width:min(1010px,calc(100vw - 36px))}
+.detgrid h4{margin:0 0 3px;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.detgrid p{font-size:13.5px}
+.hint{font-size:12.5px;color:var(--muted);margin-top:10px;display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+.hint span{display:inline-flex;align-items:center;gap:7px}
+.hint .tick{width:18px;height:18px}
+.credit{text-align:center;font-size:13px;color:var(--muted);padding:20px 16px 28px;border-top:1px solid rgba(128,128,128,.3);margin-top:16px}
+.foot{font-size:13px;color:var(--muted);max-width:80ch;display:flex;flex-direction:column;gap:8px}
+.savenote{font-size:12.5px;color:var(--muted)}
+
+tfoot td{border-bottom:0;border-top:2px solid var(--ink);padding:10px 6px}
+tfoot .cnt{display:block;font-family:var(--head);font-size:18px;color:var(--x-ink)}
+tfoot .small{font-size:11px;color:var(--x-ink)}
+tfoot td.sticky{text-align:left}
+tfoot td.res{text-align:left;font-size:13px;padding:10px 14px;background:color-mix(in srgb,var(--d) 14%,var(--surface))}
+tfoot td.res.bad{background:color-mix(in srgb,var(--b) 18%,var(--surface))}
+
+.base{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px;display:grid;grid-template-columns:1fr;gap:14px 24px;align-items:start}
+@media (max-width:640px){.base{grid-template-columns:1fr}}
+.base h3{font-size:19px}
+.base .tag{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;background:var(--x-soft);color:var(--x-ink);border-radius:999px;padding:4px 12px 4px 5px}
+.chip .tick{width:20px;height:20px}
+.chip .tick svg{width:12px;height:12px}
+.chip.cond{background:transparent;border:1.5px dotted var(--x);padding:2.5px 11.5px 2.5px 4px}
+.base .stwrap{display:flex;gap:10px}
+.base .stwrap div{text-align:center;font-size:12px;font-weight:700;color:var(--muted)}
+.base p.sm{font-size:13.5px;margin-top:10px;max-width:70ch}
+
+.subh{font-size:18px;margin-top:26px;margin-bottom:6px}
+.uvover{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:12px}
+.uvcard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.uvh{display:flex;flex-direction:column;gap:2px}
+.uvh b{font-family:var(--head);font-size:16px}
+.uvh span{font-size:13px;color:var(--muted)}
+.uvcard ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.uvcard li{font-size:13px;display:flex;gap:8px;align-items:baseline;line-height:1.3}
+.uvcard li .m{font-size:11px;font-weight:700;border-radius:6px;padding:1px 6px;border:1.5px dashed var(--ink);flex:none}
+.uvcard li.done .m{background:var(--ink);color:var(--bg);border-style:solid}
+.uvedit{margin-top:14px;font-size:14px}
+.uvedit summary{cursor:pointer;font-weight:600}
+.uvinputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:10px;margin-top:10px}
+.uvin{display:flex;flex-direction:column;gap:3px;font-size:12px;font-weight:700;color:var(--muted)}
+.uvin input{font:inherit;font-size:14px;font-weight:500;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 9px;min-width:0}
+td.uvcell{min-width:212px;padding:8px 10px}
+.uvgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.uvb{font-size:11.5px;font-weight:600;border-radius:8px;padding:5px 2px;cursor:pointer;border:2px dashed var(--line);background:transparent;color:var(--muted);white-space:nowrap}
+.uvb:hover{border-color:var(--ink)}
+.uvb.s1{border-color:var(--ink);background:var(--soft);color:var(--ink)}
+.uvb.s2{border:2px solid var(--ink);background:var(--ink);color:var(--bg)}
+
+td.stcell{vertical-align:top;padding-top:12px;min-width:130px}
+.stbtn{width:118px}
+.uvl{display:block;font-size:11px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:104px;margin:1px auto 0}
+.uvl:empty{display:none}
+.ed{margin:6px auto 0;width:118px;display:flex;flex-direction:column;gap:6px;text-align:left}
+.seg{display:flex;flex-direction:column;gap:3px}
+.seg button{border:1.5px solid var(--line);background:var(--surface);border-radius:7px;padding:3px 6px;font-size:12px;cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.edl{display:flex;flex-direction:column;gap:2px;font-size:11px;font-weight:700;color:var(--muted)}
+.edl input{font:inherit;font-size:12.5px;font-weight:500;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:5px 6px;width:100%;min-width:0}
+.vw{border-top:1px solid var(--line);padding-top:10px}
+.vw summary{cursor:pointer;font-size:13px;font-weight:700;list-style:none;display:flex;align-items:center;gap:8px;padding:2px 0}
+.vw summary::-webkit-details-marker{display:none}
+.vw summary::before{content:"";width:7px;height:7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg);transition:transform .15s}
+.vw[open] summary::before{transform:rotate(45deg)}
+.vw .savebtn{align-self:flex-start;margin-top:8px;background:var(--ink);color:var(--bg);border:0;border-radius:8px;padding:7px 14px;font:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.flist{margin-top:8px}
+.uvg{margin-top:10px}.uvt{font-size:13px;font-weight:700;margin-bottom:4px}
+.flist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px;font-size:13px}
+.flist li{display:flex;gap:8px;align-items:baseline;line-height:1.3}
+.flist .m{font-size:11px;font-weight:700;border-radius:6px;padding:1px 6px;border:1.5px dashed var(--ink);flex:none}
+.flist .m.d{background:var(--ink);color:var(--bg);border-style:solid}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head><body>
+<div id="nojs" style="background:#FFF4CC;color:#4a3b00;border:1px solid #E3C24A;border-radius:12px;padding:14px 16px;margin:16px;font:16px/1.4 system-ui,sans-serif"><b>Nur Vorschau, ohne Funktion.</b> Diese Ansicht führt keine Skripte aus. Bitte die Seite über ihren Link in einem Browser öffnen (Safari, Chrome, Edge, Firefox), nicht aus der Dateivorschau.</div>
+<script>document.getElementById("nojs").style.display="none";</script>
+
+
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <p class="small muted" style="font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">Englisch Sek II · Sonstige Mitarbeit</p>
+      <h1>Englisch: Sonstige Mitarbeit</h1>
+    </div>
+    <p class="lead">Der KLP verlangt, dass in jedem Schuljahr alle Dimensionen in beiden Ausprägungen vorkommen (S. 38): <b>Beteiligung</b> (einzeln, Team), <b>Hilfsmittel</b> (ohne Hilfen, mit Hilfen), <b>Vorbereitung</b> (ad hoc, vorbereitet), <b>Gesprächsform</b> (Monolog, Dialog) und <b>Schwerpunkt</b> (Inhalt, Darstellung).</p>
+    <ol class="steps" style="padding:0;margin:0">
+      <li><b>1</b>Dimensionen (Checkliste)</li>
+      <li><b>2</b>Projekt einplanen, Ergänzungen wählen</li>
+      <li><b>3</b>Q1 und Q2 anklicken: geplant, dann erledigt</li>
+    </ol>
+  </header>
+
+  <section aria-labelledby="h-dim">
+    <div class="sechead">
+      <h2 id="h-dim">Die fünf Dimensionen</h2>
+      <p class="small muted">Jede Dimension hat zwei Ausprägungen in derselben Farbe.</p>
+    </div>
+    <div class="dims" id="dims"><article class="dim dA"><div class="dimtop"><div class="letter">A</div><div><h3>Beteiligung</h3></div></div><div class="poles"><div class="pole"><div class="pk"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>A1 · einzeln</div><p><b>Individualleistung</b></p></div><div class="pole"><div class="pk"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>A2 · Team</div><p><b>Kooperative / kollaborative Leistung</b><br>Das gemeinsame Ergebnis oder die Zusammenarbeit wird bewertet.</p><p class="bsp">z. B. Gruppenposter, Podcast im Team</p></div></div></article><article class="dim dB"><div class="dimtop"><div class="letter">B</div><div><h3>Hilfsmittel</h3></div></div><div class="poles"><div class="pole"><div class="pk"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>B1 · ohne Hilfen</div><p><b>Hilfsmittel-/werkzeugfreie Leistung</b><br>Ohne Wörterbuch, Notizen, Geräte oder KI.</p><p class="bsp">z. B. Frage am Stundenende, freie Diskussion</p></div><div class="pole"><div class="pk"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>B2 · mit Hilfen</div><p><b>Hilfsmittel-/werkzeugunterstützte Leistung</b><br>Wörterbuch, Material, digitale Werkzeuge oder KI gehören zur Leistung. Die KI-Einbindung ist laut KLP verpflichtend (S. 39).</p><p class="bsp">z. B. Recherche, Video schneiden, KI-Text prüfen</p></div></div></article><article class="dim dC"><div class="dimtop"><div class="letter">C</div><div><h3>Vorbereitung</h3></div></div><div class="poles"><div class="pole"><div class="pk"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>C1 · ad hoc</div><p><b>Ad-hoc-Leistung</b><br>Spontan: Man reagiert auf Fragen, Impulse oder Beiträge, ohne den Inhalt vorher zu kennen oder dafür ein eigenes Produkt vorbereitet zu haben.</p><p class="bsp">z. B. Antwort auf eine Nachfrage, Quick Check</p></div><div class="pole"><div class="pk"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>C2 · vorbereitet</div><p><b>Leistung auf einem längerfristig vorbereiteten Produkt</b><br>Man weiß vorher, dass man liefern muss, und bereitet dafür außerhalb der Stunde der Leistung ein Produkt vor (Video, Handout, Plakat, Expertenergebnis): in einer früheren Stunde, als Hausaufgabe oder in einer Projektphase.</p><p class="bsp">z. B. Erklärvideo, Vortrag, Gruppenpuzzle</p></div></div></article><article class="dim dD"><div class="dimtop"><div class="letter">D</div><div><h3>Gesprächsform</h3></div></div><div class="poles"><div class="pole"><div class="pk"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>D1 · Monolog</div><p><b>Monologische Leistung</b></p></div><div class="pole"><div class="pk"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>D2 · Dialog</div><p><b>Dialogische Leistung</b></p></div></div></article><article class="dim dE"><div class="dimtop"><div class="letter">E</div><div><h3>Schwerpunkt</h3></div></div><div class="poles"><div class="pole"><div class="pk"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>E1 · Inhalt</div><p><b>Inhaltlich geprägte Leistung</b><br>Verständnis, Analyse und Argumentation stehen im Vordergrund.</p><p class="bsp">z. B. Zusammenfassung, Stellungnahme</p></div><div class="pole"><div class="pk"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>E2 · Darstellung</div><p><b>Präsentativ geprägte Leistung</b><br>Gestaltung und Wirkung stehen im Vordergrund: Aufbau, Medien, Vortragsweise.</p><p class="bsp">z. B. Präsentation, Videoschnitt, Plakat</p></div></div></article></div>
+    <p class="noteline"><b>Hinweis:</b> Der KLP nennt nur die Bezeichnungen der Ausprägungen. Die Erläuterungen sind ein Vorschlag. Im Fach Englisch hat die sprachliche Leistung/Darstellungsleistung höheres Gewicht als die inhaltliche Leistung (S. 39).</p>
+  </section>
+
+  <section id="stand" aria-labelledby="h-stand">
+    <div class="sechead">
+      <h2 id="h-stand">Mein Stand</h2>
+      <p class="small muted" id="savenote">Dein Stand wird nur in diesem Browser auf diesem Gerät gespeichert. Zum Wechseln des Geräts: Stand sichern und dort laden.</p>
+    <div class="sbar"><button type="button" class="sbtn" id="exp">Stand sichern (Datei)</button><button type="button" class="sbtn" id="imp">Stand laden</button><input type="file" id="impf" accept="application/json,.json" hidden=""></div></div>
+    <div class="years" id="years"><article class="year"><div class="yhead"><h3>Q1</h3><div class="score"><b>0</b> von 10 erledigt</div></div><div class="cgroups"><div class="cg dA"><span class="lab">A · Beteiligung</span><button type="button" class="pill open" data-pole="q1|A1" aria-expanded="false"><span>A1 einzeln</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button><button type="button" class="pill open" data-pole="q1|A2" aria-expanded="false"><span>A2 Team</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button></div><div class="cg dB"><span class="lab">B · Hilfsmittel</span><button type="button" class="pill open" data-pole="q1|B1" aria-expanded="false"><span>B1 ohne Hilfen</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button><button type="button" class="pill open" data-pole="q1|B2" aria-expanded="false"><span>B2 mit Hilfen</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button></div><div class="cg dC"><span class="lab">C · Vorbereitung</span><button type="button" class="pill open" data-pole="q1|C1" aria-expanded="false"><span>C1 ad hoc</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button><button type="button" class="pill open" data-pole="q1|C2" aria-expanded="false"><span>C2 vorbereitet</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button></div><div class="cg dD"><span class="lab">D · Gesprächsform</span><button type="button" class="pill open" data-pole="q1|D1" aria-expanded="false"><span>D1 Monolog</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button><button type="button" class="pill open" data-pole="q1|D2" aria-expanded="false"><span>D2 Dialog</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button></div><div class="cg dE"><span class="lab">E · Schwerpunkt</span><button type="button" class="pill open" data-pole="q1|E1" aria-expanded="false"><span>E1 Inhalt</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button><button type="button" class="pill open" data-pole="q1|E2" aria-expanded="false"><span>E2 Darstellung</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button></div></div><details class="vw" data-vw="q1f" open=""><summary>Nach Format</summary><p class="small muted" style="margin:6px 0 0">Noch nichts geplant.</p></details><details class="vw" data-vw="q1u" open=""><summary>Nach Unterrichtsvorhaben</summary><p class="small muted" style="margin:6px 0 0">Noch nichts geplant.</p></details><div class="next"><span>10 Ausprägungen noch ohne Format. Kürzester Weg: <b>Group Project with Premiere and Q&amp;A</b> deckt 10 davon ab.</span><button type="button" data-go="projekt">Zum Format</button></div></article><article class="year"><div class="yhead"><h3>Q2</h3><div class="score"><b>0</b> von 10 erledigt</div></div><div class="cgroups"><div class="cg dA"><span class="lab">A · Beteiligung</span><button type="button" class="pill open" data-pole="q2|A1" aria-expanded="false"><span>A1 einzeln</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button><button type="button" class="pill open" data-pole="q2|A2" aria-expanded="false"><span>A2 Team</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button></div><div class="cg dB"><span class="lab">B · Hilfsmittel</span><button type="button" class="pill open" data-pole="q2|B1" aria-expanded="false"><span>B1 ohne Hilfen</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button><button type="button" class="pill open" data-pole="q2|B2" aria-expanded="false"><span>B2 mit Hilfen</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button></div><div class="cg dC"><span class="lab">C · Vorbereitung</span><button type="button" class="pill open" data-pole="q2|C1" aria-expanded="false"><span>C1 ad hoc</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button><button type="button" class="pill open" data-pole="q2|C2" aria-expanded="false"><span>C2 vorbereitet</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button></div><div class="cg dD"><span class="lab">D · Gesprächsform</span><button type="button" class="pill open" data-pole="q2|D1" aria-expanded="false"><span>D1 Monolog</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button><button type="button" class="pill open" data-pole="q2|D2" aria-expanded="false"><span>D2 Dialog</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button></div><div class="cg dE"><span class="lab">E · Schwerpunkt</span><button type="button" class="pill open" data-pole="q2|E1" aria-expanded="false"><span>E1 Inhalt</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button><button type="button" class="pill open" data-pole="q2|E2" aria-expanded="false"><span>E2 Darstellung</span><span class="st">offen</span><span class="chev" aria-hidden="true"></span></button></div></div><details class="vw" data-vw="q2f" open=""><summary>Nach Format</summary><p class="small muted" style="margin:6px 0 0">Noch nichts geplant.</p></details><details class="vw" data-vw="q2u" open=""><summary>Nach Unterrichtsvorhaben</summary><p class="small muted" style="margin:6px 0 0">Noch nichts geplant.</p></details><div class="next"><span>10 Ausprägungen noch ohne Format. Kürzester Weg: <b>Group Project with Premiere and Q&amp;A</b> deckt 10 davon ab.</span><button type="button" data-go="projekt">Zum Format</button></div><p class="small muted">Q2.4: Die Projektgruppe kann das Produkt-Projekt als Projektaufgabe machen, die Abiturgruppe wählt Formate mit Monolog und Dialog zur Prüfungsvorbereitung.</p></article></div>
+  </section>
+
+  <section aria-label="Contributions in Lessons">
+    <div id="base" class="base" style="margin-bottom:0"><div><span class="tag">Findet immer statt</span><h3>Contributions in Lessons</h3><div class="chips"><span class="chip dA"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>A1 einzeln</span><span class="chip dB"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>B1 ohne Hilfen</span><span class="chip dC"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>C1 ad hoc</span><span class="chip dD"><span class="tick p2"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>D2 Dialog</span><span class="chip dE"><span class="tick p1"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></span>E1 Inhalt</span><span class="chip cond dD" title="bedingt">D1 Monolog (bedingt)</span></div><p class="sm">Dazu zählen auch kurze Diskussionsrunden im Plenum. Zählt als Nachweis nur, wenn du über das Jahr festhältst, wer wann was beigetragen hat. Kriterien: Qualität, Quantität, Kontinuität. Freie Beiträge zählen als ohne Hilfsmittel, Beiträge mit Textvorlage oder Notizen als mit Hilfsmitteln.</p></div></div>
+  </section>
+
+  <section aria-labelledby="h-pflicht">
+    <div class="sechead">
+      <h2 id="h-pflicht">Weitere Formen der Sonstigen Mitarbeit</h2>
+      <p class="small muted">Gilt für Q1 und Q2 getrennt. Das Projekt hat zwei Bewertungsteile; die Zeile „Anzahl“ zeigt, dass zusammen jede Ausprägung genau 1× vorkommt.</p>
+    </div>
+    <div class="scroll" role="region" aria-label="Projekt" tabindex="0">
+      <table id="matrixP"><thead><tr><th class="sticky" rowspan="2">Format</th><th colspan="2" class="dimh dA">A · Beteiligung</th><th colspan="2" class="dimh dB">B · Hilfsmittel</th><th colspan="2" class="dimh dC">C · Vorbereitung</th><th colspan="2" class="dimh dD">D · Gesprächsform</th><th colspan="2" class="dimh dE">E · Schwerpunkt</th><th colspan="2">Mein Stand</th></tr><tr><th class="poleh dA"><b>A1</b><span>einzeln</span></th><th class="poleh dA"><b>A2</b><span>Team</span></th><th class="poleh dB"><b>B1</b><span>ohne Hilfen</span></th><th class="poleh dB"><b>B2</b><span>mit Hilfen</span></th><th class="poleh dC"><b>C1</b><span>ad hoc</span></th><th class="poleh dC"><b>C2</b><span>vorbereitet</span></th><th class="poleh dD"><b>D1</b><span>Monolog</span></th><th class="poleh dD"><b>D2</b><span>Dialog</span></th><th class="poleh dE"><b>E1</b><span>Inhalt</span></th><th class="poleh dE"><b>E2</b><span>Darstellung</span></th><th>Q1</th><th>Q2</th></tr></thead><tbody><tr class="tier"><th colspan="13"><span>Ein Projekt pro Schuljahr<small></small></span></th></tr><tr id="row-projekt"><td class="sticky"><div class="fname"><button type="button" data-tog="projekt" aria-expanded="false"><svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 2l4 4-4 4"></path></svg><span>Group Project with Premiere and Q&amp;A</span></button><span class="kurz">Gruppen erarbeiten ein Produkt, stellen es vor und beantworten Fragen.</span><span class="part">① The product and presentation (group mark)</span></div></td><td class="pc dA"></td><td class="pc dA on"><span class="tick p2" title="Kooperative / kollaborative Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dB"></td><td class="pc dB on"><span class="tick p2" title="Hilfsmittel-/werkzeugunterstützte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dC"></td><td class="pc dC on"><span class="tick p2" title="Leistung auf einem längerfristig vorbereiteten Produkt"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dD on"><span class="tick p1" title="Monologische Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dD"></td><td class="pc dE"></td><td class="pc dE on"><span class="tick p2" title="Präsentativ geprägte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td rowspan="2" class="stcell"><button type="button" class="stbtn s0" data-ed="projekt|q1" aria-expanded="false" aria-label="Group Project with Premiere and Q&amp;A, Q1 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td><td rowspan="2" class="stcell"><button type="button" class="stbtn s0" data-ed="projekt|q2" aria-expanded="false" aria-label="Group Project with Premiere and Q&amp;A, Q2 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td></tr><tr id="row-projekt"><td class="sticky"><div class="fname"><span class="part">② Q&amp;A round (individual mark)</span></div></td><td class="pc dA on"><span class="tick p1" title="Individualleistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dA"></td><td class="pc dB on"><span class="tick p1" title="Hilfsmittel-/werkzeugfreie Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dB"></td><td class="pc dC on"><span class="tick p1" title="Ad-hoc-Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dC"></td><td class="pc dD"></td><td class="pc dD on"><span class="tick p2" title="Dialogische Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dE on"><span class="tick p1" title="Inhaltlich geprägte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dE"></td></tr></tbody><tfoot><tr class="chk"><td class="sticky"><b>Anzahl</b></td><td class="pc on dA"><b class="cnt">1×</b></td><td class="pc on dA"><b class="cnt">1×</b></td><td class="pc on dB"><b class="cnt">1×</b></td><td class="pc on dB"><b class="cnt">1×</b></td><td class="pc on dC"><b class="cnt">1×</b></td><td class="pc on dC"><b class="cnt">1×</b></td><td class="pc on dD"><b class="cnt">1×</b></td><td class="pc on dD"><b class="cnt">1×</b></td><td class="pc on dE"><b class="cnt">1×</b></td><td class="pc on dE"><b class="cnt">1×</b></td><td colspan="2"></td></tr></tfoot></table>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-erg">
+    <div class="sechead">
+      <h2 id="h-erg">Ergänzende Formate</h2>
+      <p class="small muted">Für Abwechslung, Einzelnoten oder gezielte Übung (mit Erläuterungen)</p>
+    </div>
+    <div class="scroll" role="region" aria-label="Ergänzende Formate" tabindex="0">
+      <table id="matrixE"><thead><tr><th class="sticky" rowspan="2">Format</th><th colspan="2" class="dimh dA">A · Beteiligung</th><th colspan="2" class="dimh dB">B · Hilfsmittel</th><th colspan="2" class="dimh dC">C · Vorbereitung</th><th colspan="2" class="dimh dD">D · Gesprächsform</th><th colspan="2" class="dimh dE">E · Schwerpunkt</th><th colspan="2">Mein Stand</th></tr><tr><th class="poleh dA"><b>A1</b><span>einzeln</span></th><th class="poleh dA"><b>A2</b><span>Team</span></th><th class="poleh dB"><b>B1</b><span>ohne Hilfen</span></th><th class="poleh dB"><b>B2</b><span>mit Hilfen</span></th><th class="poleh dC"><b>C1</b><span>ad hoc</span></th><th class="poleh dC"><b>C2</b><span>vorbereitet</span></th><th class="poleh dD"><b>D1</b><span>Monolog</span></th><th class="poleh dD"><b>D2</b><span>Dialog</span></th><th class="poleh dE"><b>E1</b><span>Inhalt</span></th><th class="poleh dE"><b>E2</b><span>Darstellung</span></th><th>Q1</th><th>Q2</th></tr></thead><tbody><tr class="tier"><th colspan="13"><span>Gruppenformate<small></small></span></th></tr><tr id="row-gruppe"><td class="sticky"><div class="fname"><button type="button" data-tog="gruppe" aria-expanded="false"><svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 2l4 4-4 4"></path></svg><span>Jigsaw Task (Expert Groups)</span></button><span class="kurz">Erst als Expert:innen erarbeiten, dann in neuen Gruppen vermitteln.</span></div></td><td class="pc dA"><span class="tick cond p1" title="bedingt: zählt nur, wenn gezielt bewertet"></span></td><td class="pc dA on"><span class="tick p2" title="Kooperative / kollaborative Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dB"></td><td class="pc dB on"><span class="tick p2" title="Hilfsmittel-/werkzeugunterstützte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dC"></td><td class="pc dC on"><span class="tick p2" title="Leistung auf einem längerfristig vorbereiteten Produkt"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dD"></td><td class="pc dD on"><span class="tick p2" title="Dialogische Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dE on"><span class="tick p1" title="Inhaltlich geprägte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dE"></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="gruppe|q1" aria-expanded="false" aria-label="Jigsaw Task (Expert Groups), Q1 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="gruppe|q2" aria-expanded="false" aria-label="Jigsaw Task (Expert Groups), Q2 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td></tr><tr id="row-debate"><td class="sticky"><div class="fname"><button type="button" data-tog="debate" aria-expanded="false"><svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 2l4 4-4 4"></path></svg><span>Debate / Panel Discussion</span></button><span class="kurz">Rollenkarten, Stichwort-Karteikarten, freie Diskussion.</span></div></td><td class="pc dA on"><span class="tick p1" title="Individualleistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dA"><span class="tick cond p2" title="bedingt: zählt nur, wenn gezielt bewertet"></span></td><td class="pc dB"></td><td class="pc dB on"><span class="tick p2" title="Hilfsmittel-/werkzeugunterstützte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dC"><span class="tick cond p1" title="bedingt: zählt nur, wenn gezielt bewertet"></span></td><td class="pc dC on"><span class="tick p2" title="Leistung auf einem längerfristig vorbereiteten Produkt"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dD"><span class="tick cond p1" title="bedingt: zählt nur, wenn gezielt bewertet"></span></td><td class="pc dD on"><span class="tick p2" title="Dialogische Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dE on"><span class="tick p1" title="Inhaltlich geprägte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dE"></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="debate|q1" aria-expanded="false" aria-label="Debate / Panel Discussion, Q1 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="debate|q2" aria-expanded="false" aria-label="Debate / Panel Discussion, Q2 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td></tr><tr class="tier"><th colspan="13"><span>Einzelleistungen<small></small></span></th></tr><tr id="row-praes"><td class="sticky"><div class="fname"><button type="button" data-tog="praes" aria-expanded="false"><svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 2l4 4-4 4"></path></svg><span>Individual Presentation (Lightning Talk)</span></button><span class="kurz">3 Min Vortrag zu einem Teilaspekt.</span></div></td><td class="pc dA on"><span class="tick p1" title="Individualleistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dA"></td><td class="pc dB"></td><td class="pc dB on"><span class="tick p2" title="Hilfsmittel-/werkzeugunterstützte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dC"><span class="tick cond p1" title="bedingt: zählt nur, wenn gezielt bewertet"></span></td><td class="pc dC on"><span class="tick p2" title="Leistung auf einem längerfristig vorbereiteten Produkt"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dD on"><span class="tick p1" title="Monologische Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dD"><span class="tick cond p2" title="bedingt: zählt nur, wenn gezielt bewertet"></span></td><td class="pc dE"></td><td class="pc dE on"><span class="tick p2" title="Präsentativ geprägte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="praes|q1" aria-expanded="false" aria-label="Individual Presentation (Lightning Talk), Q1 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="praes|q2" aria-expanded="false" aria-label="Individual Presentation (Lightning Talk), Q2 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td></tr><tr id="row-werkstatt"><td class="sticky"><div class="fname"><button type="button" data-tog="werkstatt" aria-expanded="false"><svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 2l4 4-4 4"></path></svg><span>Work-and-Explain Check (Individual Task)</span></button><span class="kurz">Erst mit Wörterbuch, Material oder KI erarbeiten, dann erläutern.</span></div></td><td class="pc dA on"><span class="tick p1" title="Individualleistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dA"></td><td class="pc dB"></td><td class="pc dB on"><span class="tick p2" title="Hilfsmittel-/werkzeugunterstützte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dC on"><span class="tick p1" title="Ad-hoc-Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dC"></td><td class="pc dD on"><span class="tick p1" title="Monologische Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dD"></td><td class="pc dE on"><span class="tick p1" title="Inhaltlich geprägte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dE"></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="werkstatt|q1" aria-expanded="false" aria-label="Work-and-Explain Check (Individual Task), Q1 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="werkstatt|q2" aria-expanded="false" aria-label="Work-and-Explain Check (Individual Task), Q2 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td></tr><tr id="row-quick"><td class="sticky"><div class="fname"><button type="button" data-tog="quick" aria-expanded="false"><svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 2l4 4-4 4"></path></svg><span>Quick Check (Assessment on Demand)</span></button><span class="kurz">Am Stundenende wird eine Person ausgefragt.</span></div></td><td class="pc dA on"><span class="tick p1" title="Individualleistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dA"></td><td class="pc dB on"><span class="tick p1" title="Hilfsmittel-/werkzeugfreie Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dB"></td><td class="pc dC on"><span class="tick p1" title="Ad-hoc-Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dC"></td><td class="pc dD on"><span class="tick p1" title="Monologische Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dD"><span class="tick cond p2" title="bedingt: zählt nur, wenn gezielt bewertet"></span></td><td class="pc dE on"><span class="tick p1" title="Inhaltlich geprägte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dE"></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="quick|q1" aria-expanded="false" aria-label="Quick Check (Assessment on Demand), Q1 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="quick|q2" aria-expanded="false" aria-label="Quick Check (Assessment on Demand), Q2 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td></tr><tr id="row-protokoll"><td class="sticky"><div class="fname"><button type="button" data-tog="protokoll" aria-expanded="false"><svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 2l4 4-4 4"></path></svg><span>End-of-Lesson Minutes</span></button><span class="kurz">Wird in der Stunde geführt und am Ende abgegeben.</span></div></td><td class="pc dA on"><span class="tick p1" title="Individualleistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dA"></td><td class="pc dB"></td><td class="pc dB on"><span class="tick p2" title="Hilfsmittel-/werkzeugunterstützte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dC on"><span class="tick p1" title="Ad-hoc-Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dC"></td><td class="pc dD on"><span class="tick p1" title="Monologische Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dD"></td><td class="pc dE on"><span class="tick p1" title="Inhaltlich geprägte Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dE"></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="protokoll|q1" aria-expanded="false" aria-label="End-of-Lesson Minutes, Q1 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="protokoll|q2" aria-expanded="false" aria-label="End-of-Lesson Minutes, Q2 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td></tr><tr id="row-wortschatz"><td class="sticky"><div class="fname"><button type="button" data-tog="wortschatz" aria-expanded="false"><svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 2l4 4-4 4"></path></svg><span>Vocabulary in Context (Written Exercise)</span></button><span class="kurz">Kurzer schriftlicher Test zum Wortfeld des Vorhabens.</span></div></td><td class="pc dA on"><span class="tick p1" title="Individualleistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dA"></td><td class="pc dB on"><span class="tick p1" title="Hilfsmittel-/werkzeugfreie Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dB"></td><td class="pc dC"><span class="tick cond p1" title="bedingt: zählt nur, wenn gezielt bewertet"></span></td><td class="pc dC"></td><td class="pc dD on"><span class="tick p1" title="Monologische Leistung"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg><span class="sr" hidden="">ja</span></span></td><td class="pc dD"></td><td class="pc dE"><span class="tick cond p1" title="bedingt: zählt nur, wenn gezielt bewertet"></span></td><td class="pc dE"></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="wortschatz|q1" aria-expanded="false" aria-label="Vocabulary in Context (Written Exercise), Q1 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td><td rowspan="1" class="stcell"><button type="button" class="stbtn s0" data-ed="wortschatz|q2" aria-expanded="false" aria-label="Vocabulary in Context (Written Exercise), Q2 offen. Klicken zum Bearbeiten">offen<span class="uvl"></span></button></td></tr></tbody><tfoot><tr class="chk"><td class="sticky"><b>Anzahl</b></td><td class="pc on dA"><b class="cnt">6×</b></td><td class="pc on dA"><b class="cnt">1×</b></td><td class="pc on dB"><b class="cnt">2×</b></td><td class="pc on dB"><b class="cnt">5×</b></td><td class="pc on dC"><b class="cnt">3×</b></td><td class="pc on dC"><b class="cnt">3×</b></td><td class="pc on dD"><b class="cnt">5×</b></td><td class="pc on dD"><b class="cnt">2×</b></td><td class="pc on dE"><b class="cnt">5×</b></td><td class="pc on dE"><b class="cnt">1×</b></td><td colspan="2"></td></tr></tfoot></table>
+    </div>
+    <div class="hint">
+      <span><i class="tick p1 dA" style="--x:var(--ink)"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.3 3.2L13 4.5"></path></svg></i> gesichert abgedeckt, wenn du es so durchführst und bewertest</span>
+      <span><i class="tick p1 cond dA" style="--x:var(--ink)"></i> bedingt: zählt nur, wenn du es gezielt bewertest</span>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p><b>Grundlage:</b> KLP Englisch Sek II (Neufassung), Dimensionen der Leistungserbringung S. 38, Sonstige Mitarbeit S. 43. Die Zuordnung der Formate zu den Dimensionen ist ein fachdidaktischer Vorschlag.</p>
+    <p>Nicht aufgenommen: Portfolio (Korrekturaufwand deutlich höher) und Abi-Duo (deckt nichts ab, was andere Formate nicht schon abdecken). End-of-Lesson Minutes bringen keine neue Ausprägung, ist aber gut zu bewerten und ergänzt das Schreiben.</p>
+    <p>Kompetenzbereiche: SoMi-Formate prüfen vor allem Sprechen und Interaktion. Schreiben, Lese- und Hör-/Hörsehverstehen sowie Sprachmittlung decken die Klausuren ab. Der KLP verlangt die Berücksichtigung aller Kompetenzbereiche in der Leistungsbewertung insgesamt (S. 39).</p>
+    <p>Zwei Verfahrensregeln für die Zuordnung: Ein Kreuz steht nur, wenn die Ausprägung der Kern der bewerteten Leistung ist. Eine Ausprägung zählt nur, wenn du sie tatsächlich bewertest und festhältst.</p>
+  </footer>
+</div>
+<div id="credit" class="credit">Erstellt von ARN mit Hilfe von Claude Sonnet 5.5</div>
+
+<script>
+(function(){
+var CHECK='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.3 3.2L13 4.5"/></svg>';
+var DIMS=[
+ {k:'A',cls:'dA',q:'Wer erbringt die Leistung?',name:'Beteiligung',poles:[
+  {k:'A1',short:'einzeln',name:'Individualleistung',txt:'',bsp:''},
+  {k:'A2',short:'Team',name:'Kooperative / kollaborative Leistung',txt:'Das gemeinsame Ergebnis oder die Zusammenarbeit wird bewertet.',bsp:'Gruppenposter, Podcast im Team'}]},
+ {k:'B',cls:'dB',q:'Welche Hilfen sind dabei?',name:'Hilfsmittel',poles:[
+  {k:'B1',short:'ohne Hilfen',name:'Hilfsmittel-/werkzeugfreie Leistung',txt:'Ohne Wörterbuch, Notizen, Geräte oder KI.',bsp:'Frage am Stundenende, freie Diskussion'},
+  {k:'B2',short:'mit Hilfen',name:'Hilfsmittel-/werkzeugunterstützte Leistung',txt:'Wörterbuch, Material, digitale Werkzeuge oder KI gehören zur Leistung. Die KI-Einbindung ist laut KLP verpflichtend (S. 39).',bsp:'Recherche, Video schneiden, KI-Text prüfen'}]},
+ {k:'C',cls:'dC',q:'Wie viel Vorbereitung steckt drin?',name:'Vorbereitung',poles:[
+  {k:'C1',short:'ad hoc',name:'Ad-hoc-Leistung',txt:'Spontan: Man reagiert auf Fragen, Impulse oder Beiträge, ohne den Inhalt vorher zu kennen oder dafür ein eigenes Produkt vorbereitet zu haben.',bsp:'Antwort auf eine Nachfrage, Quick Check'},
+  {k:'C2',short:'vorbereitet',name:'Leistung auf einem längerfristig vorbereiteten Produkt',txt:'Man weiß vorher, dass man liefern muss, und bereitet dafür außerhalb der Stunde der Leistung ein Produkt vor (Video, Handout, Plakat, Expertenergebnis): in einer früheren Stunde, als Hausaufgabe oder in einer Projektphase.',bsp:'Erklärvideo, Vortrag, Gruppenpuzzle'}]},
+ {k:'D',cls:'dD',q:'Wie wird gesprochen oder geschrieben?',name:'Gesprächsform',poles:[
+  {k:'D1',short:'Monolog',name:'Monologische Leistung',txt:'',bsp:''},
+  {k:'D2',short:'Dialog',name:'Dialogische Leistung',txt:'',bsp:''}]},
+ {k:'E',cls:'dE',q:'Worauf liegt der Schwerpunkt?',name:'Schwerpunkt',poles:[
+  {k:'E1',short:'Inhalt',name:'Inhaltlich geprägte Leistung',txt:'Verständnis, Analyse und Argumentation stehen im Vordergrund.',bsp:'Zusammenfassung, Stellungnahme'},
+  {k:'E2',short:'Darstellung',name:'Präsentativ geprägte Leistung',txt:'Gestaltung und Wirkung stehen im Vordergrund: Aufbau, Medien, Vortragsweise.',bsp:'Präsentation, Videoschnitt, Plakat'}]}
+];
+var POLES=[];DIMS.forEach(function(d){d.poles.forEach(function(p,i){p.dim=d;p.idx=i;POLES.push(p);});});
+var PMAP={};POLES.forEach(function(p){PMAP[p.k]=p;});
+function S(s){return s?s.split(' '):[];}
+
+var TIERS_P=[{t:'Ein Projekt pro Schuljahr',s:'',ids:['projekt']}];
+var TIERS_E=[
+ {t:'Gruppenformate',s:'',ids:['gruppe','debate']},
+ {t:'Einzelleistungen',s:'',ids:['praes','werkstatt','quick','protokoll','wortschatz']}
+];
+var F={
+ projekt:{name:'Group Project with Premiere and Q&A',kurz:'Gruppen erarbeiten ein Produkt, stellen es vor und beantworten Fragen.',u:3,k:2,
+  parts:[{label:'① The product and presentation (group mark)',sure:S('A2 B2 C2 D1 E2'),cond:[]},{label:'② Q&A round (individual mark)',sure:S('A1 B1 C1 D2 E1'),cond:[]}],
+  ablauf:'Gruppen zu vier erarbeiten zum Vorhaben ein Produkt: Erklärvideo (2 Min), Podcast, Slideshow oder Kampagne. Bei der Premiere stellt jede Gruppe 5 Min vor, danach 3 Min Fragen. Jede Person der Gruppe bekommt eine eigene Frage, ohne Unterlagen. KI darf im Prozess genutzt werden, die Nutzung wird dokumentiert und reflektiert (verpflichtend, KLP S. 39).',
+  zeit:'Arbeitsphase im Unterricht, Premiere mit Fragen ca. 50 Min bei 6 Gruppen.',
+  bew:'Produkt nach Kriterienraster (Gruppe). Fragerunde mit Beobachtungsbogen direkt notieren (Einzelnote). Rollenverteilung oder Arbeitsprotokoll machen individuelle Anteile sichtbar. Beide Teile bewerten, sonst zählt ② nicht.',
+  bsp:'Q1.2 Erklärvideo „Brexit in 2 minutes“ · Q1.3 Podcast „Voices of the American Dream“ · Q2.1 Kampagne gegen Desinformation · Q2.3 Pitch einer eigenen Utopie'},
+ beitraege:{name:'Contributions in Lessons',kurz:'Läuft immer mit (schulinterner Lehrplan): Plenum und Unterrichtsgespräch.',u:0,k:1,
+  parts:[{sure:S('A1 B1 C1 D2 E1'),cond:S('D1')}],
+  ablauf:'Dazu zählen auch kurze Diskussionsrunden im Plenum. Zählt als Nachweis nur, wenn du über das Jahr festhältst, wer wann was beigetragen hat.',
+  zeit:'Kein Extra-Zeitbedarf.',bew:'Kriterien: Qualität, Quantität, Kontinuität. Freie Beiträge zählen als ohne Hilfsmittel, Beiträge mit Textvorlage oder Notizen als mit Hilfsmitteln.',bsp:'Alle Vorhaben.'},
+ quick:{name:'Quick Check (Assessment on Demand)',kurz:'Am Stundenende wird eine Person ausgefragt.',u:1,k:1,
+  parts:[{sure:S('A1 B1 C1 D1 E1'),cond:S('D2')}],
+  ablauf:'In den letzten 3 Min fasst eine Person zusammenhängend zusammen, was in der Stunde erarbeitet wurde, ohne Material. Nachfragen der Lehrkraft sind möglich und zählen für Dialog nur, wenn du sie bewertest. Pro Stunde ein bis zwei Personen, über das Quartal rotierend. Die mündliche Variante der „schriftlichen Übung“ im KLP (S. 43).',
+  zeit:'ca. 3 Min pro Person.',bew:'Kurzbogen mit drei Stufen: Inhalt, Sprache, Sicherheit.',bsp:'Q1.4: „Explain the main conflict of today’s text in your own words.“'},
+ wortschatz:{name:'Vocabulary in Context (Written Exercise)',kurz:'Kurzer schriftlicher Test zum Wortfeld des Vorhabens.',u:1,k:1,
+  parts:[{sure:S('A1 B1 D1'),cond:S('C1 E1')}],
+  ablauf:'5 Min zu Stundenbeginn, alle schreiben gleichzeitig ohne Hilfsmittel: Lückentext zum Wortfeld des Vorhabens, Begriffe in eigenen Sätzen erklären oder Paraphrasen ergänzen. Nicht einzelne Vokabeln übersetzen lassen. Ad hoc zählt nur, wenn der Test unangekündigt ist.',
+  zeit:'ca. 5 Min für den ganzen Kurs.',bew:'Kriterienraster mit wenigen Punkten: Richtigkeit, Angemessenheit im Kontext. Laut KLP (S. 39) gilt: „Ein isoliertes, lediglich auf Reproduktion angelegtes Abfragen einzelner Daten und Sachverhalte allein kann dabei den zuvor formulierten Ansprüchen an die Leistungsfeststellung nicht gerecht werden.“ Deshalb Wortschatz immer im Kontext prüfen. Bringt keine neue Ausprägung.',bsp:'Q2.1: Lückentext zum Wortfeld „media and manipulation“ · Q1.3: Fünf Begriffe zum American Dream in eigenen Sätzen erklären.'},
+ werkstatt:{name:'Work-and-Explain Check (Individual Task)',kurz:'Erst mit Wörterbuch, Material oder KI erarbeiten, dann erläutern.',u:2,k:1,
+  parts:[{sure:S('A1 B2 C1 D1 E1'),cond:[]}],
+  ablauf:'10 Min Einzelarbeit an einer kleinen Aufgabe: Mindmap, Kurztext oder Argumentliste. Erlaubte Hilfsmittel: Wörterbuch (WöBu), Material (Text, Heft, Buch) und KI. Dann wird eine Person aufgerufen, ohne es vorher zu wissen, und erläutert mit den eigenen Notizen, was sie erarbeitet hat.',
+  zeit:'10 bis 12 Min der Stunde, bewertet werden nur wenige Personen.',bew:'Kurzbogen: Inhalt, Sprache, Umgang mit Hilfsmitteln. Bei KI-Nutzung zählt auch der kritische Umgang mit dem Ergebnis (KLP S. 39). Ad hoc heißt hier: Wer aufgerufen wird, ist vorher unbekannt.',bsp:'Mindmap: Q1.1 „Gender roles in the text“ · Kurztext (60 Wörter): Q1.3 „What the American Dream means to the narrator“ · Argumentliste: Q2.2 „Pros and cons of globalisation“ · Mit KI: Q2.1 KI-Zusammenfassung eines Artikels prüfen und korrigieren.'},
+ gruppe:{name:'Jigsaw Task (Expert Groups)',kurz:'Erst als Expert:innen erarbeiten, dann in neuen Gruppen vermitteln.',u:2,k:1,
+  parts:[{sure:S('A2 B2 C2 D2 E1'),cond:S('A1')}],
+  ablauf:'Expertenphase: Jede Gruppe erarbeitet einen Teil des Materials mit Hilfsmitteln und erstellt ein Handout oder Notizen. Die Expertenphase liegt in einer früheren Stunde als die Vermittlung oder ist Hausaufgabe. Passiert beides in einer Stunde, zählt es als ad hoc statt als vorbereitet. Stammgruppenphase: Jede Person vermittelt ihren Teil im Gespräch.',
+  zeit:'Zwei Stunden mit je 20 bis 25 Min, alle Gruppen laufen parallel.',bew:'Expertenergebnis nach Kriterien (Gruppe) und Beobachtungsbogen für die Vermittlung (einzeln, deshalb A1 nur bedingt).',bsp:'Q2.2: Jede Expertengruppe analysiert eine globalisierte Branche.'},
+ debate:{name:'Debate / Panel Discussion',kurz:'Rollenkarten, Stichwort-Karteikarten, freie Diskussion.',u:3,k:2,
+  parts:[{sure:S('A1 B2 C2 D2 E1'),cond:S('A2 C1 D1')}],
+  ablauf:'Rollenkarten werden in einer früheren Stunde oder als Hausaufgabe vergeben. Die Person bereitet ihre Rolle vor und schreibt Keywords auf Karteikarten, die sie in der Debatte nutzen darf. Jede Person hält ein Eröffnungsstatement von 1 Min, dann folgt die freie Diskussion mit sechs bis acht Personen. Der Rest beobachtet mit Bogen. Die Teamvorbereitung wird nicht bewertet, deshalb ist Team nur bedingt.',
+  zeit:'ca. 45 Min für alle (drei Runden zu 15 Min).',bew:'Beobachtungsbogen: Argumentation, Reaktion auf andere, Sprache. Die Karteikarten mit vorbereiteten Keywords zählen als Hilfsmittel, deshalb „mit Hilfsmitteln“. Die Rolle und die Karteikarten sind längerfristig vorbereitet (C2). Die eigentliche Diskussion mit Reaktion auf andere ist ad hoc (C1), das zählt nur, wenn du sie gezielt bewertest.',bsp:'Q1.1 „Should schools use gender-neutral language?“ · Q2.3 „Freedom or security?“'},
+ protokoll:{name:'End-of-Lesson Minutes',kurz:'Wird in der Stunde geführt und am Ende abgegeben.',u:1,k:1,
+  parts:[{sure:S('A1 B2 C1 D1 E1'),cond:[]}],
+  ablauf:'Eine Person führt das Stundenprotokoll auf Englisch, rotierend, mit Wörterbuch und Notizen. In den letzten 5 Min wird es fertiggestellt und abgegeben.',
+  zeit:'Kein Zeitbedarf außer den letzten 5 Min. Hält die SuS im Unterricht aktiv.',bew:'Kriterienraster mit wenigen Punkten: Vollständigkeit, Sprache, Struktur. Einfach zu bewerten. Wird in der Stunde geführt und abgegeben, daher ad hoc. Deckt dieselben Ausprägungen ab wie der Work-and-Explain Check, ist aber eine schriftliche Leistung und damit die einzige SoMi-Form für Schreiben.',bsp:'Q1.1: Stundenprotokoll zur Gruppendiskussion.'},
+ praes:{name:'Individual Presentation (Lightning Talk)',kurz:'3 Min Vortrag zu einem Teilaspekt.',u:3,k:2,
+  parts:[{sure:S('A1 B2 C2 D1 E2'),cond:S('C1 D2')}],
+  ablauf:'3 Min Vortrag, 2 Min Rückfragen. Vorbereitungszeit mindestens eine Woche. Die Rückfragen zählen für Dialog und Ad-hoc nur, wenn du sie bewertest.',
+  zeit:'5 Min pro Person. Besser nur für einen Teil des Kurses pro Vorhaben.',bew:'Kriterienraster: Inhalt, Sprache, Vortragsweise, Medien.',bsp:'Q1.4: Ein Aspekt der nigerianischen Gesellschaft in 3 Minuten.'}
+};
+Object.keys(F).forEach(function(id){var f=F[id];f.id=id;f.sure=[];f.parts.forEach(function(p){p.sure.forEach(function(k){if(f.sure.indexOf(k)<0)f.sure.push(k);});});});
+
+/* state */
+var KEY='somi-pflicht-v1', state={}, dbDoc=null, open={};
+try{state=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){state={};}
+function st(id,q){if(id==='beitraege')return 1;return (state[id]&&state[id][q])||0;}
+var editing=null;
+function esc(x){return String(x==null?'':x).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');}
+function uvOf(id,q){return (state[id]&&state[id][q+'uv'])||'';}
+var UVL={q1:['Q1.1 Gender and identity','Q1.2 Britain','Q1.3 American Dream','Q1.4 Nigeria'],q2:['Q2.1 The Media','Q2.2 Living and working in a globalised world','Q2.3 Utopia/Dystopia','Q2.4 Abiturvorbereitung / Projektaufgabe']};
+function stLabel(q,s){return q.toUpperCase()+' '+(s===2?'erledigt':s===1?'geplant':'offen');}
+var BUILD='v46',edits={},lsOk=true,baseMsg='';
+window.addEventListener('error',function(e){try{setNote('Fehler: '+e.message,true);}catch(x){}});
+function setNote(t,bad){var n=document.getElementById('savenote');if(n){n.textContent=t+' ('+BUILD+')';n.style.color=bad?'#b3261e':'';}}
+var dirty=false,busy=false;
+function flush(){
+  if(busy||!dirty||!dbDoc)return;dirty=false;busy=true;setNote('Speichere …');
+  var snap=JSON.parse(JSON.stringify(state)),pr;
+  try{pr=dbDoc.set({state:snap});}catch(e){busy=false;setNote('Speichern fehlgeschlagen: '+(e&&e.message||e),true);return;}
+  Promise.resolve(pr).then(function(){busy=false;if(dirty)flush();else setNote('Gespeichert in deinem Konto.');}).catch(function(e){busy=false;setNote('Speichern im Konto fehlgeschlagen: '+(e&&(e.message||e.code)||e),true);});
+}
+function save(){
+  try{localStorage.setItem(KEY,JSON.stringify(state));lsOk=true;}catch(e){lsOk=false;}
+  if(dbDoc){dirty=true;flush();}
+  else if(!lsOk){setNote('Speichern nicht möglich: Der Browser blockiert den Speicher.',true);}
+}
+function touch(id,field,val){state[id]=state[id]||{};state[id][field]=val;edits[id]=edits[id]||{};edits[id][field]=val;}
+
+function cover(q){
+  var done={},plan={},base={};
+  Object.keys(F).forEach(function(id){if(id==='beitraege')return;var s=st(id,q);F[id].sure.forEach(function(k){if(s===2)done[k]=1;if(s>=1)plan[k]=1;});});
+  return {done:done,plan:plan,base:base};
+}
+var viewOpen={},poleOpen={};
+function renderYears(){
+  var el=document.getElementById('years'),html='';
+  ['q1','q2'].forEach(function(q){
+    var c=cover(q),nd=0,np=0;
+    var miss={};POLES.forEach(function(p){var dn=c.done[p.k]||c.base[p.k],pl=dn||c.plan[p.k];if(dn)nd++;if(pl)np++;else miss[p.k]=1;});
+    var nm=Object.keys(miss).length;
+    var groups=DIMS.map(function(d){
+      return '<div class="cg '+d.cls+'"><span class="lab">'+d.k+' · '+d.name+'</span>'+d.poles.map(function(p){
+        var cl=c.done[p.k]?'done':(c.base[p.k]?'fix':(c.plan[p.k]?'plan':'open')),tx=c.done[p.k]?'erledigt':(c.base[p.k]?'Beiträge':(c.plan[p.k]?'geplant':'offen'));
+        var sel=(poleOpen[q]===p.k);return '<button type="button" class="pill '+cl+(sel?' sel':'')+'" data-pole="'+q+'|'+p.k+'" aria-expanded="'+sel+'"><span>'+p.k+' '+p.short+'</span><span class="st">'+tx+'</span><span class="chev" aria-hidden="true"></span></button>';}).join('')+'</div>';}).join('');
+    var pdet='';
+    if(poleOpen[q]){var pk=PMAP[poleOpen[q]],rows=[];
+      Object.keys(F).forEach(function(id){if(id==='beitraege')return;var sv=st(id,q);if(sv>0&&F[id].sure.indexOf(pk.k)>=0){var u=(uvOf(id,q)||'').trim();rows.push('<li><span class="m'+(sv===2?' d':'')+'">'+(sv===2?'✓':'geplant')+'</span><span><b>'+(u?esc(u):'<span class="muted">kein Unterrichtsvorhaben eingetragen</span>')+'</b><br><span class="muted">'+F[id].name+'</span></span></li>');}});
+      var cands=Object.keys(F).filter(function(id){return id!=='beitraege'&&st(id,q)===0&&F[id].sure.indexOf(pk.k)>=0;}).sort(function(a,b){return (F[a].u+F[a].k)-(F[b].u+F[b].k);});
+      var cl=cands.length?'<div class="pdt" style="margin-top:4px">Mögliche Formate</div><ul class="cands">'+cands.map(function(id){return '<li><span class="cn">'+F[id].name+'</span><input type="text" class="cuv" data-cu="'+id+'|'+q+'" placeholder="Unterrichtsvorhaben" aria-label="Unterrichtsvorhaben für '+esc(F[id].name)+'"><button type="button" class="savebtn" data-plan="'+id+'|'+q+'">Planen</button></li>';}).join('')+'</ul>':'';
+      pdet='<div class="pdet '+pk.dim.cls+'"><div class="pdt">'+pk.k+' · '+pk.short+' in '+q.toUpperCase()+'</div>'+(rows.length?'<ul class="flist">'+rows.join('')+'</ul>':'<p class="small" style="margin:0;opacity:.8">Noch keinem Format zugeordnet.</p>')+cl+'</div>';}
+    var next='';
+    if(nm>0){
+      var best=null,bs=-1,bc=99;
+      Object.keys(F).forEach(function(id){if(st(id,q)!==0)return;var f=F[id],sc=f.sure.filter(function(k){return miss[k];}).length,cost=f.u+f.k;
+        if(sc>bs||(sc===bs&&cost<bc)){best=f;bs=sc;bc=cost;}});
+      next='<div class="next"><span>'+nm+' Ausprägung'+(nm>1?'en':'')+' noch ohne Format.'+(best&&bs>0?' Kürzester Weg: <b>'+best.name+'</b> deckt '+bs+' davon ab.':'')+'</span>'+(best&&bs>0?'<button type="button" data-go="'+best.id+'">Zum Format</button>':'')+'</div>';
+    }else if(nd<10){
+      next='<div class="next good"><span>Alle 10 Ausprägungen sind eingeplant. Noch zu erledigen: '+(10-nd)+'.</span></div>';
+    }else{
+      next='<div class="next good"><span><b>Geschafft:</b> Alle 10 Ausprägungen sind in '+q.toUpperCase()+' erledigt.</span></div>';
+    }
+    var hint=q==='q2'?'<p class="small muted">Q2.4: Die Projektgruppe kann das Produkt-Projekt als Projektaufgabe machen, die Abiturgruppe wählt Formate mit Monolog und Dialog zur Prüfungsvorbereitung.</p>':'';
+    var items=[];Object.keys(F).forEach(function(id){if(id==='beitraege')return;var sv=st(id,q);if(sv>0)items.push({id:id,sv:sv,uv:(uvOf(id,q)||'').trim()});});
+    function mark(sv){return '<span class="m'+(sv===2?' d':'')+'">'+(sv===2?'✓':'geplant')+'</span>';}
+    var fl=items.map(function(it){return '<li>'+mark(it.sv)+'<span>'+F[it.id].name+(it.uv?' <span class="muted">· '+esc(it.uv)+'</span>':'')+'</span></li>';});
+    var grp={},order=[];items.forEach(function(it){var key=it.uv?it.uv.toLowerCase():'';if(!grp[key]){grp[key]={t:it.uv,l:[]};order.push(key);}grp[key].l.push(it);});
+    order.sort(function(a,b){return a===''?1:b===''?-1:0;});
+    var ul=order.map(function(key){var g=grp[key];return '<div class="uvg"><div class="uvt">'+(g.t?esc(g.t):'<span class="muted">Ohne Unterrichtsvorhaben</span>')+'</div><ul class="flist">'+g.l.map(function(it){return '<li>'+mark(it.sv)+'<span>'+F[it.id].name+'</span></li>';}).join('')+'</ul></div>';}).join('');
+    var emptyMsg='<p class="small muted" style="margin:6px 0 0">Noch nichts geplant.</p>';
+    function det(kind,title,body){var o=viewOpen[q+kind];return '<details class="vw" data-vw="'+q+kind+'"'+(o===false?'':' open')+'><summary>'+title+'</summary>'+(items.length?body:emptyMsg)+'</details>';}
+    var flist=det('f','Nach Format','<ul class="flist">'+fl.join('')+'</ul>')+det('u','Nach Unterrichtsvorhaben',ul);
+    html+='<article class="year"><div class="yhead"><h3>'+q.toUpperCase()+'</h3><div class="score"><b>'+nd+'</b> von 10 erledigt'+(np>nd?' · '+np+' inkl. geplant':'')+'</div></div><div class="cgroups">'+groups+'</div>'+pdet+flist+next+hint+'</article>';
+  });
+  el.innerHTML=html;
+  Array.prototype.forEach.call(el.querySelectorAll('details.vw'),function(d){d.addEventListener('toggle',function(){viewOpen[d.getAttribute('data-vw')]=d.open;});});
+}
+function renderDims(){
+  document.getElementById('dims').innerHTML=DIMS.map(function(d){
+    return '<article class="dim '+d.cls+'"><div class="dimtop"><div class="letter">'+d.k+'</div><div><h3>'+d.name+'</h3></div></div><div class="poles">'+d.poles.map(function(p,i){
+      return '<div class="pole"><div class="pk"><span class="tick p1">'+CHECK+'</span>'+p.k+' · '+p.short+'</div>'+(p.txt?'<p><b>'+p.name+'</b><br>'+p.txt+'</p><p class="bsp">z. B. '+p.bsp+'</p>':'<p><b>'+p.name+'</b></p>')+'</div>';}).join('')+'</div></article>';}).join('');
+}
+function meter(n){var s='<span class="meter" role="img" aria-label="'+n+' von 3">';for(var i=0;i<3;i++)s+='<i'+(i<n?' class="f"':'')+'></i>';return s+'</span>';}
+function stLabel(q,s){return q.toUpperCase()+' '+(s===2?'erledigt':s===1?'geplant':'offen');}
+function buildTable(elId,TIERS,mode){
+  var N=13,h='<thead><tr><th class="sticky" rowspan="2">Format</th>';
+  DIMS.forEach(function(d){h+='<th colspan="2" class="dimh '+d.cls+'">'+d.k+' · '+d.name+'</th>';});
+  h+='<th colspan="2">Mein Stand</th></tr><tr>';
+  POLES.forEach(function(p){h+='<th class="poleh '+p.dim.cls+'"><b>'+p.k+'</b><span>'+p.short+'</span></th>';});
+  h+='<th>Q1</th><th>Q2</th></tr></thead><tbody>';
+  TIERS.forEach(function(t){
+    h+='<tr class="tier"><th colspan="'+N+'"><span>'+t.t+'<small>'+t.s+'</small></span></th></tr>';
+    t.ids.forEach(function(id){
+      var f=F[id],isOpen=!!open[id];
+      f.parts.forEach(function(p,pi){
+        h+='<tr id="row-'+id+'">'.replace('id="row-'+id+'"',pi===0?'id="row-'+id+'"':'');
+        h+='<td class="sticky"><div class="fname">';
+        if(pi===0){h+='<button type="button" data-tog="'+id+'" aria-expanded="'+isOpen+'"><svg class="chev" width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 2l4 4-4 4"/></svg><span>'+f.name+'</span></button><span class="kurz">'+f.kurz+'</span>';}
+        if(p.label)h+='<span class="part">'+p.label+'</span>';
+        h+='</div></td>';
+        POLES.forEach(function(po){
+          var on=p.sure.indexOf(po.k)>=0,cd=(p.cond||[]).indexOf(po.k)>=0;
+          h+='<td class="pc '+po.dim.cls+(on?' on':'')+'">';
+          if(on)h+='<span class="tick p'+(po.idx+1)+'" title="'+po.name+'">'+CHECK+'<span class="sr" hidden>ja</span></span>';
+          else if(cd)h+='<span class="tick cond p'+(po.idx+1)+'" title="bedingt: zählt nur, wenn gezielt bewertet"></span>';
+          h+='</td>';});
+        if(pi===0){
+          var rs=f.parts.length;
+          
+          ['q1','q2'].forEach(function(q){var s=st(id,q),uv=uvOf(id,q),key=id+'|'+q,ed=(editing===key);
+            h+='<td rowspan="'+rs+'" class="stcell"><button type="button" class="stbtn s'+s+'" data-ed="'+key+'" aria-expanded="'+ed+'" aria-label="'+esc(f.name)+', '+stLabel(q,s)+(uv?', '+esc(uv):'')+'. Klicken zum Bearbeiten">'+(s===2?'✓ erledigt':s===1?'geplant':'offen')+'<span class="uvl">'+esc(uv)+'</span></button>';
+            if(ed){h+='<div class="ed"><div class="seg" role="group" aria-label="Stand">'+['offen','geplant','erledigt'].map(function(l,i){return '<button type="button" class="'+(s===i?'on':'')+'" data-set="'+key+'|'+i+'">'+l+'</button>';}).join('')+'</div><label class="edl">Unterrichtsvorhaben<input type="text" data-uvt="'+key+'" id="uv-'+id+'-'+q+'" value="'+esc(uv)+'" placeholder="z. B. '+UVL[q][0].split(' ')[0]+'"></label><button type="button" class="savebtn" data-save="'+key+'">Speichern</button></div>';}
+            h+='</td>';});
+        }
+        h+='</tr>';
+      });
+      if(isOpen){
+        h+='<tr class="det"><td colspan="'+N+'"><div class="detgrid"><div><h4>Ablauf</h4><p>'+f.ablauf+'</p></div><div><h4>Zeit</h4><p>'+f.zeit+'</p></div><div><h4>Bewertung</h4><p>'+f.bew+'</p></div><div><h4>Beispiele</h4><p>'+f.bsp+'</p></div></div></td></tr>';
+      }
+    });
+  });
+  var f='<tfoot><tr class="chk"><td class="sticky"><b>Anzahl</b></td>';
+  var ids=[];TIERS.forEach(function(t){t.ids.forEach(function(i){ids.push(i);});});
+  POLES.forEach(function(po){var n=0;ids.forEach(function(id){if(F[id].sure.indexOf(po.k)>=0)n++;});
+    f+='<td class="pc on '+po.dim.cls+'"><b class="cnt">'+n+'×</b></td>';});
+  f+='<td colspan="2"></td></tr></tfoot>';
+  document.getElementById(elId).innerHTML=h+'</tbody>'+f;
+}
+function renderMatrix(){buildTable('matrixP',TIERS_P,'p');buildTable('matrixE',TIERS_E,'e');}
+function renderBase(){
+  var f=F.beitraege,el=document.getElementById('base');
+  var chips=f.sure.map(function(k){var p=PMAP[k];return '<span class="chip '+p.dim.cls+'"><span class="tick p'+(p.idx+1)+'">'+CHECK+'</span>'+p.k+' '+p.short+'</span>';}).join('')+
+    f.parts[0].cond.map(function(k){var p=PMAP[k];return '<span class="chip cond '+p.dim.cls+'" title="bedingt">'+p.k+' '+p.short+' (bedingt)</span>';}).join('');
+  el.innerHTML='<div><span class="tag">Findet immer statt</span><h3>Contributions in Lessons</h3><div class="chips">'+chips+'</div><p class="sm">'+f.ablauf+' '+f.bew+'</p></div>';
+}
+function renderAll(){renderYears();renderBase();renderMatrix();}
+
+function onUv(e){var t=e.target;if(t&&t.dataset&&t.dataset.uvt){var p=t.dataset.uvt.split('|');touch(p[0],p[1]+'uv',t.value);save();var l=document.querySelector('[data-ed="'+t.dataset.uvt+'"] .uvl');if(l)l.textContent=t.value;renderYears();}}
+['input','change','keyup'].forEach(function(ev){document.addEventListener(ev,onUv);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&editing){var k=editing;editing=null;renderMatrix();var bb=document.querySelector('[data-ed="'+k+'"]');if(bb)bb.focus();}});
+function planFmt(k){var p=k.split('|'),id=p[0],q=p[1],inp=document.querySelector('[data-cu="'+k+'"]');
+  touch(id,q+'uv',inp?inp.value.trim():'');touch(id,q,1);save();renderAll();}
+function commitEd(k){var p=k.split('|'),id=p[0],q=p[1],inp=document.getElementById('uv-'+id+'-'+q);
+  if(inp){touch(id,q+'uv',inp.value);}
+  if(st(id,q)===0&&inp&&inp.value.trim()){touch(id,q,1);}
+  editing=null;save();renderAll();var bb=document.querySelector('[data-ed="'+k+'"]');if(bb)bb.focus();}
+document.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target&&e.target.dataset&&e.target.dataset.cu){e.preventDefault();planFmt(e.target.dataset.cu);return;}if(e.key==='Enter'&&e.target&&e.target.dataset&&e.target.dataset.uvt){e.preventDefault();commitEd(e.target.dataset.uvt);}});
+document.addEventListener('click',function(e){
+  var t=e.target.closest('[data-tog],[data-ed],[data-set],[data-go],[data-save],[data-pole],[data-plan]');if(!t)return;
+  if(t.dataset.tog){var id=t.dataset.tog;open[id]=!open[id];renderMatrix();var b=document.querySelector('[data-tog="'+id+'"]');if(b)b.focus();}
+  else if(t.dataset.ed){var k=t.dataset.ed;editing=(editing===k)?null:k;renderMatrix();var bb=document.querySelector('[data-ed="'+k+'"]');if(bb&&!editing)bb.focus();var inp=editing&&document.querySelector('[data-uvt="'+k+'"]');if(inp)inp.focus();}
+  else if(t.dataset.set){var p=t.dataset.set.split('|'),id2=p[0],q=p[1],v=+p[2];touch(id2,q,v);save();renderAll();var bb2=document.querySelector('[data-set="'+t.dataset.set+'"]');if(bb2)bb2.focus();}
+  else if(t.dataset.pole){var pq=t.dataset.pole.split('|');poleOpen[pq[0]]=(poleOpen[pq[0]]===pq[1])?null:pq[1];renderYears();var nb=document.querySelector('[data-pole="'+t.dataset.pole+'"]');if(nb)nb.focus();}
+  else if(t.dataset.plan){planFmt(t.dataset.plan);}
+  else if(t.dataset.save){commitEd(t.dataset.save);}
+  else if(t.dataset.go){var id3=t.dataset.go;open[id3]=true;renderMatrix();var r=document.getElementById('row-'+id3);if(r)r.scrollIntoView({behavior:'smooth',block:'center'});}
+});
+
+renderDims();renderAll();
+if(window.SOMI_STANDALONE){(function(){
+  var h=document.getElementById('savenote');if(!h)return;
+  var oldb=document.querySelector('.sbar');if(oldb)oldb.remove();
+  var bar=document.createElement('div');bar.className='sbar';
+  bar.innerHTML='<button type="button" class="sbtn" id="exp">Stand sichern (Datei)</button><button type="button" class="sbtn" id="imp">Stand laden</button><input type="file" id="impf" accept="application/json,.json" hidden>';
+  h.parentNode.appendChild(bar);
+  document.getElementById('exp').addEventListener('click',function(){
+    var blob=new Blob([JSON.stringify({somi:1,state:state},null,1)],{type:'application/json'}),a=document.createElement('a');
+    a.href=URL.createObjectURL(blob);a.download='somi-stand.json';document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},500);});
+  document.getElementById('imp').addEventListener('click',function(){document.getElementById('impf').click();});
+  document.getElementById('impf').addEventListener('change',function(e){var f=e.target.files&&e.target.files[0];if(!f)return;var r=new FileReader();
+    r.onload=function(){try{var d=JSON.parse(r.result);if(!d||typeof d.state!=='object')throw new Error('keine Stand-Datei');state=d.state;edits={};save();renderAll();setNote('Stand geladen.');}catch(x){setNote('Datei konnte nicht gelesen werden: '+x.message,true);}};r.readAsText(f);e.target.value='';});
+})();}
+var note=document.getElementById('savenote');note.textContent=window.SOMI_STANDALONE?'Dein Stand wird nur in diesem Browser auf diesem Gerät gespeichert. Zum Wechseln des Geräts: Stand sichern und dort laden.':'Dein Stand wird in diesem Browser gespeichert.';
+
+(async function(){
+  try{
+    if(!window.claude||!window.claude.use)return;
+    var db=await window.claude.use('db'),user=await window.claude.use('user');
+    if(!db||!user)return;
+    var id=await user.id();if(!id)return;
+    var doc=db.collection('data/users/'+id).doc('somi-pflicht'),snap=await doc.get();
+    if(snap.exists){var d=snap.data();if(d&&d.state&&typeof d.state==='object'){var rem=JSON.parse(JSON.stringify(d.state));Object.keys(edits).forEach(function(id){rem[id]=Object.assign({},rem[id],edits[id]);});state=rem;try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}}
+    dbDoc=doc;
+    if(Object.keys(state).length){await doc.set({state:state});}
+    var ae=document.activeElement;if(ae&&ae.dataset&&ae.dataset.uvt){renderYears();}else{renderAll();}
+    setNote('Dein Stand wird in deinem Konto gespeichert und ist nur für dich sichtbar.');
+  }catch(e){setNote('Konto-Speicher nicht erreichbar, Stand nur in diesem Browser: '+(e&&e.message||e),true);}
+})();
+})();
+</script>
+
+<script>
+(function(){var T="Erstellt von ARN mit Hilfe von Claude Sonnet 5.5",CSS="display:block;visibility:visible;opacity:1;position:static;height:auto;font-size:13px";
+function ensure(){var c=document.getElementById("credit");
+if(!c){c=document.createElement("div");c.id="credit";c.className="credit";document.body.appendChild(c);}
+if(c.textContent!==T)c.textContent=T;
+if(c.getAttribute("style")!==CSS)c.setAttribute("style",CSS);}
+setInterval(ensure,3000);})();
+</script>
+
+
+
+</body></html>
